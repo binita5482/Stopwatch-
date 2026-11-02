@@ -3,31 +3,31 @@ const display = document.getElementById("display");
 let timer = null;
 let startTime = 0;
 let elapsedTime = 0;
-let isRunning =false;
+let isRunning = false;
 
-function start(){
+function start() {
 
-    if(!isRunning){
+    if (!isRunning) {
         startTime = Date.now() - elapsedTime;
         timer = setInterval(update, 10);
         isRunning = true;
     }
 }
-function stop(){
-    if(isRunning){
+function stop() {
+    if (isRunning) {
         clearInterval(timer);
         elapsedTime = Date.now() - startTime;
         isRunning = false;
     }
 }
-function reset(){
+function reset() {
     clearInterval(timer);
     startTime = 0;
     elapsedTime = 0;
-    isRunning =false;
+    isRunning = false;
     display.textContent = "00:00:00:00"
 }
-function update(){
+function update() {
     const currentTime = Date.now();
     elapsedTime = currentTime - startTime;
 
@@ -37,7 +37,7 @@ function update(){
     let millisecond = Math.floor(elapsedTime % 100 / 10);
 
     hours = String(hours).padStart(2, "0");
-    minutes = String( minutes).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
     seconds = String(seconds).padStart(2, "0");
     millisecond = String(millisecond).padStart(2, "0");
 
